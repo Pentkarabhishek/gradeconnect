@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GradeConnect</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      color: #333;
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 8%;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6a5acd;
+    }
+
+    .navbar .actions button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .btn-login {
+      background: #fff;
+      border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+      background: #6a5acd;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #6a5acd;
+    }
+
+    .hero p {
+      margin: 15px 0 30px;
+      font-size: 1.1rem;
+      color: #666;
+    }
+
+    .hero .login-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .student-btn {
+      background: #6a5acd;
+      color: #fff;
+    }
+
+    .teacher-btn,
+    .parent-btn,
+    .admin-btn {
+      background: #f5f5f5;
+      border: 1px solid #ccc;
+    }
+
+    /* Stats Section */
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px 10%;
+      text-align: center;
+      background: #f9f9ff;
+    }
+
+    .stats div {
+      font-size: 1.2rem;
+    }
+
+    .stats h2 {
+      color: #6a5acd;
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .features h2 {
+      margin-bottom: 30px;
+    }
+
+    .features-grid {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .feature-card {
+      flex: 1;
+      min-width: 250px;
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 15px;
+      color: #6a5acd;
+    }
+
+    /* About Section */
+    .about {
+      padding: 60px 10%;
+      background: #f9f9ff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .about-left {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .about-right {
+      flex: 1;
+      min-width: 280px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #eee;
+    }
+
+    .about-right h3 {
+      color: #6a5acd;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 60px 10%;
+      text-align: center;
+    }
+
+    .testimonial-grid {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .testimonial-card {
+      flex: 1;
+      min-width: 250px;
+      background: #fff;
+      border: 1px solid #eee;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .testimonial-card p {
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card strong {
+      display: block;
+      margin-top: 10px;
+      color: #6a5acd;
+    }
+
+    /* Contact Section */
+    .contact {
+      padding: 60px 10%;
+      background: #f9f9ff;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .contact-left {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .contact-left p {
+      margin-bottom: 10px;
+    }
+
+    .contact-right {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .contact-right form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-right input,
+    .contact-right textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .contact-right button {
+      background: #6a5acd;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 10%;
+      background: #fff;
+      border-top: 1px solid #eee;
+      text-align: center;
+    }
+
+    footer .footer-links {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    footer .footer-links div {
+      min-width: 120px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .stats {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .features-grid,
+      .testimonial-grid {
+        flex-direction: column;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+
+      .contact {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">GradeConnect</div>
+    <div class="actions">
+      <button class="btn-login">Login</button>
+      <button class="btn-primary">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Connect, Track and Excel</h1>
+    <p>A comprehensive platform for students, teachers, and parents to track academic progress, attendance, and performance in one place.</p>
+    <div class="login-buttons">
+      <a href="login/student_login.php">
+        <button class="student-btn">Student Login</button>
+      </a>
+      <a href="login/teacher login.php">
+        <button class="teacher-btn">Teacher Login</button>
+      </a>
+      
+      <button class="parent-btn">Parent Login</button>
+      <button class="admin-btn">Admin Login</button>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div>
+      <h2>500+</h2>
+      <p>Schools & Colleges</p>
+    </div>
+    <div>
+      <h2>50K+</h2>
+      <p>Active Students</p>
+    </div>
+    <div>
+      <h2>5K+</h2>
+      <p>Teachers</p>
+    </div>
+    <div>
+      <h2>99.9%</h2>
+      <p>Uptime</p>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2>Key Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>For Students</h3>
+        <p>View attendance records</p>
+        <p>Check exam results</p>
+        <p>Access course materials</p>
+        <p>Track assignments</p>
+        <p>View schedule and timetables</p>
+      </div>
+      <div class="feature-card">
+        <h3>For Teachers</h3>
+        <p>Mark student attendance</p>
+        <p>Enter and manage grades</p>
+        <p>Create assignments</p>
+        <p>Schedule exams</p>
+        <p>Communicate with students</p>
+      </div>
+      <div class="feature-card">
+        <h3>For Parents</h3>
+        <p>Monitor child’s attendance</p>
+        <p>Track academic performance</p>
+        <p>View exam results</p>
+        <p>Check upcoming events</p>
+        <p>Communicate with teachers</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <div class="about-left">
+      <h2>About GradeConnect</h2>
+      <p>GradeConnect is a modern education management system designed to bridge the gap between students, teachers, and parents. Our platform provides comprehensive tools for academic tracking, attendance management, and performance monitoring.</p>
+      <p>Founded in 2023, we have been committed to transforming the educational experience through innovative technology solutions that make learning more accessible and efficient.</p>
+    </div>
+    <div class="about-right">
+      <h3>Our Mission</h3>
+      <p>To empower educational institutions with cutting-edge technology that enhances learning outcomes and strengthens the connection between all stakeholders in the education ecosystem.</p>
+      <h3>Our Vision</h3>
+      <p>To become the leading education management platform that transforms how institutions manage academic processes and student engagement worldwide.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p>“GradeConnect has revolutionized how we manage our school. The attendance tracking and grade management features are incredible!”</p>
+        <strong>- Dr. Sarah Johnson, Principal</strong>
+      </div>
+      <div class="testimonial-card">
+        <p>“As a parent, I love being able to track my child’s progress in real-time. The communication features are fantastic.”</p>
+        <strong>- Michael Chen, Parent</strong>
+      </div>
+      <div class="testimonial-card">
+        <p>“The student dashboard is so user-friendly. I can easily check my grades, assignments, and schedule all in one place.”</p>
+        <strong>- Emma Rodriguez, Student</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact">
+    <div class="contact-left">
+      <h2>Get in Touch</h2>
+      <p><strong>Email:</strong> contact@gradeconnect.com</p>
+      <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+      <p><strong>Address:</strong> 123 Education Street, Tech City, TC 12345</p>
+    </div>
+    <div class="contact-right">
+      <h2>Send us a Message</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="your.email@example.com" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <textarea id="message" placeholder="Tell us more about your needs..." rows="5" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <div>
+        <h4>Product</h4>
+        <p><a href="#">Features</a></p>
+        <p><a href="#">Pricing</a></p>
+        <p><a href="#">Demo</a></p>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <p><a href="#">About</a></p>
+        <p><a href="#">Careers</a></p>
+        <p><a href="#">Blog</a></p>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <p><a href="#">Help Center</a></p>
+        <p><a href="#">Contact</a></p>
+        <p><a href="#">Documentation</a></p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <p><a href="#">Privacy</a></p>
+        <p><a href="#">Terms</a></p>
+        <p><a href="#">Security</a></p>
+      </div>
+    </div>
+    <p>© 2025 GradeConnect. All rights reserved.<br>A comprehensive education management system for modern institutions.</p>
+  </footer>
+
+  <script>
+    // Simple form handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("✅ Thank you for reaching out! We'll get back to you soon.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
